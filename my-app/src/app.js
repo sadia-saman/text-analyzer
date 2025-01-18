@@ -5,13 +5,7 @@ const routes = require('./routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
-
-// Database connection
-mongoose.connect('mongodb://localhost:27017/text_analyzer', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
+mongoose.connect('mongodb://mongo:27017/text_analyzer');
 
 app.use(bodyParser.json());
 app.use('/api', routes);
