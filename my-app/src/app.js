@@ -10,9 +10,6 @@ mongoose.connect('mongodb://mongo:27017/text_analyzer');
 app.use(bodyParser.json());
 app.use('/api', routes);
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.get('/api/texts/words/:id', async (req, res) => {
+
 });
-
-module.exports = app;
-
