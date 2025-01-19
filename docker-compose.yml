@@ -6,11 +6,17 @@ services:
       - "3000:3000"
     depends_on:
       - mongo
+    environment:
+      - NODE_ENV=test
+    command: ["npm", "test"]
+
   mongo:
     image: mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+
 volumes:
   mongo-data:
+
