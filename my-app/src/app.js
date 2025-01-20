@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const TextRepository = require('./repositories/TextRepository');
+const textAnalyzer = require('./utils/textAnalyzer');
 
 const app = express();
 const port = process.env.PORT || 3000;
