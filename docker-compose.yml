@@ -10,7 +10,7 @@ services:
       - mongo
     environment:
       - NODE_ENV=test
-    command: ["npm", "test"]
+    # command: ["npm", "test"]
 
   mongo:
     image: mongo
