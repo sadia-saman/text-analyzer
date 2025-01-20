@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 10,
-  message: "Too many requests from this IP, please try again after 15 minutes"
+  message: "Too many requests, maximum 10calls per minute is allowed"
 });
 
 mongoose.connect('mongodb://mongo:27017/text_analyzer');
