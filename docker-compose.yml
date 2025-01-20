@@ -2,6 +2,8 @@ version: '1'
 services:
   app:
     build: ./my-app
+    volumes:
+      - ./coverage:/usr/src/app/coverage
     ports:
       - "3000:3000"
     depends_on:
