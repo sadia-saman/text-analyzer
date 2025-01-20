@@ -8,76 +8,76 @@ jest.mock('../repositories/TextRepository');
 jest.mock('../utils/textAnalyzer');
 jest.useFakeTimers()
 
-// describe('GET /api/texts/words/:id', () => {
-//     const textId = '678b3d52cdfb33278f8c0c17';
-//     const wordCount = 5;
+describe('GET /api/texts/words/:id', () => {
+    const textId = '678b3d52cdfb33278f8c0c17';
+    const wordCount = 5;
 
-//     beforeEach(() => {
-//         jest.clearAllMocks();
-//     });
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
 
-//     it('should return the word count for a given text ID', async () => {
-//         TextRepository.findById.mockResolvedValue({ id: textId, content: 'My name is sadia Saman' });
-//         textAnalyzer.countWords.mockReturnValue(wordCount);
-//         const response = await request(app).get(`/api/texts/words/${textId}`);
+    it('should return the word count for a given text ID', async () => {
+        TextRepository.findById.mockResolvedValue({ id: textId, content: 'My name is sadia Saman' });
+        textAnalyzer.countWords.mockReturnValue(wordCount);
+        const response = await request(app).get(`/api/texts/words/${textId}`);
 
-//         expect(response.status).toBe(200);
-//         expect(response.body).toHaveProperty('wordCount', wordCount);
-//     });
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('wordCount', wordCount);
+    });
 
-//     it('should return 404 if text not found', async () => {
-//         TextRepository.findById.mockResolvedValue(null);
+    it('should return 404 if text not found', async () => {
+        TextRepository.findById.mockResolvedValue(null);
 
-//         const response = await request(app).get('/api/texts/words/nonexistent');
+        const response = await request(app).get('/api/texts/words/nonexistent');
 
-//         expect(response.status).toBe(404);
-//         expect(response.body).toHaveProperty('error', 'Text not found');
-//     });
+        expect(response.status).toBe(404);
+        expect(response.body).toHaveProperty('error', 'Text not found');
+    });
 
-//     it('should return 500 if there is a server error', async () => {
-//         TextRepository.findById.mockRejectedValue(new Error('Server error'));
+    it('should return 500 if there is a server error', async () => {
+        TextRepository.findById.mockRejectedValue(new Error('Server error'));
 
-//         const response = await request(app).get(`/api/texts/words/${textId}`);
+        const response = await request(app).get(`/api/texts/words/${textId}`);
 
-//         expect(response.status).toBe(500);
-//         expect(response.body).toHaveProperty('error', 'Server error');
-//     });
-// });
-// describe('GET /api/texts/characters/:id', () => {
-//     const textId = '678b3d52cdfb33278f8c0c17';
-//     const charCount = 5;
+        expect(response.status).toBe(500);
+        expect(response.body).toHaveProperty('error', 'Server error');
+    });
+});
+describe('GET /api/texts/characters/:id', () => {
+    const textId = '678b3d52cdfb33278f8c0c17';
+    const charCount = 5;
 
-//     beforeEach(() => {
-//         jest.clearAllMocks();
-//     });
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
 
-//     it('should return the character count for a given text ID', async () => {
-//         TextRepository.findById.mockResolvedValue({ id: textId, content: 'My name is sadia Saman' });
-//         textAnalyzer.countCharacters.mockReturnValue(charCount);
-//         const response = await request(app).get(`/api/texts/characters/${textId}`);
+    it('should return the character count for a given text ID', async () => {
+        TextRepository.findById.mockResolvedValue({ id: textId, content: 'My name is sadia Saman' });
+        textAnalyzer.countCharacters.mockReturnValue(charCount);
+        const response = await request(app).get(`/api/texts/characters/${textId}`);
 
-//         expect(response.status).toBe(200);
-//         expect(response.body).toHaveProperty('charCount', charCount);
-//     });
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('charCount', charCount);
+    });
 
-//     it('should return 404 if text not found', async () => {
-//         TextRepository.findById.mockResolvedValue(null);
+    it('should return 404 if text not found', async () => {
+        TextRepository.findById.mockResolvedValue(null);
 
-//         const response = await request(app).get('/api/texts/characters/nonexistent');
+        const response = await request(app).get('/api/texts/characters/nonexistent');
 
-//         expect(response.status).toBe(404);
-//         expect(response.body).toHaveProperty('error', 'Text not found');
-//     });
+        expect(response.status).toBe(404);
+        expect(response.body).toHaveProperty('error', 'Text not found');
+    });
 
-//     it('should return 500 if there is a server error', async () => {
-//         TextRepository.findById.mockRejectedValue(new Error('Server error'));
+    it('should return 500 if there is a server error', async () => {
+        TextRepository.findById.mockRejectedValue(new Error('Server error'));
 
-//         const response = await request(app).get(`/api/texts/characters/${textId}`);
+        const response = await request(app).get(`/api/texts/characters/${textId}`);
 
-//         expect(response.status).toBe(500);
-//         expect(response.body).toHaveProperty('error', 'Server error');
-//     });
-// });
+        expect(response.status).toBe(500);
+        expect(response.body).toHaveProperty('error', 'Server error');
+    });
+});
 
 describe('GET /api/texts/sentences/:id', () => {
     const textId = '678b3d52cdfb33278f8c0c17';
