@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const TextRepository = require('./repositories/TextRepository');
@@ -7,10 +8,17 @@ const textAnalyzer = require('./utils/textAnalyzer');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 10,
+  message: "Too many requests from this IP, please try again after 15 minutes"
+});
+
 mongoose.connect('mongodb://mongo:27017/text_analyzer');
 
 app.use(bodyParser.json({ type: 'application/json', charset: 'utf-8' }));
 app.use('/api', routes);
+app.use('/api', limiter);
 
 app.get('/api/texts/words/:id', async (req, res) => {
     try {
